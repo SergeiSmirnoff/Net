@@ -14,8 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    
+    
+    
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        guard let nibs = Bundle.main.loadNibNamed("ApiViewController", owner: nil, options: nil),
+            let shopManagerVC = nibs[0] as? ApiViewController else {
+                fatalError()
+        }
+        let navigationController = UINavigationController(rootViewController: shopManagerVC)
+        // navigationController.isNavigationBarHidden = true
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         return true
     }
 
